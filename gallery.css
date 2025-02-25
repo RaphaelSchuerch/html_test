@@ -1,0 +1,74 @@
+#gallery {
+    display: grid;
+    width: 1000px;
+    grid-column: 4;
+    grid-template-columns: repeat(4, 1fr); /* Senkrecht */
+    grid-template-rows: repeat(5, 1fr);    /* Horizontal */
+    margin: 0 auto;
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+body {
+    margin: 0 auto;
+}
+img {
+    height: 100%; /* Bezeugt, dass das Bild 100% in der Kachel bleibt */
+    width: 100%;
+    border-radius: 35px;
+    transition: transform 0.3s;
+}
+figure {
+    margin: 0;
+    position: relative; /* Sorgt dafür, dass der Text immer unter dem Bild ist, egal wie Tief/Hoch man gescrollt hat. */
+    border-radius: 35px; /* Sorgt dafür das die Ecken Rund sind */
+    overflow: hidden; /* Sorgt in diesem Fall dafür, dass das Bild nicht "overflowed". Das heisst das Bild selbst wird nicht grösser, obwohl der Zoom aktiv ist. */
+}
+figcaption {
+    position: absolute; /* Die Beschriftung wird absolut positioniert, d.h. sie kann sich unabhängig vom restlichen Layout an einer genauen Stelle befinden. */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7); /* Der Virte Parameter 0.7 sorgt regelt wie durchsichtig die Schrift ist. */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    opacity: 0; /* Sorgt dafür dass der Test erst erscheint, wenn man mit der Maus drüberhovert. */
+    transition: opacity 0.3s; /* Sorgt dafür, dass der Zoom 0.3 Sek benötigt */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+figure:hover img {
+    transform: scale(1.05); /* transfrom sorgt dafür dass es Zoom't und 1.05 ist der Multiplikator, wie fest gezoomt wird. */
+}
+figure:hover figcaption { /* :hover sorgt dafür das wenn man mit der Maus drüberhovert, dass dann das passiert was man will. */
+    opacity: 1; /* Sorgt dafür das etwas erscheint wenn man drüberhovert. */
+}
+figure:nth-child(1)  {            /* figure(kann auch anderer Befehl sein) und dann listet es sozusagen nach Reihenfolge. Also die erste <figure> </figure> is nth-child(1) */
+    grid-area: 1 / 3 / 2 / 4;     /* Die Anreihung funktioniert wie folgt: column-start/row-start/column-end/row-end. */
+}
+figure:nth-child(2)  {
+    grid-area: 1 / 1 / 3 / 3;
+}
+figure:nth-child(3)  {
+    grid-area: 1 / 4 / 2 / 5;
+}
+figure:nth-child(4)  {
+    grid-area: 2 / 3 / 3 / 5;
+}
+figure:nth-child(5)  {
+    grid-area: 3 / 1 / 4 / 2;
+}
+figure:nth-child(6)  {
+    grid-area: 3 / 2 / 4 / 4;
+}
+figure:nth-child(7)  {
+    grid-area: 3 / 4 / 4 / 5;
+}
+figure:nth-child(8)  {
+    grid-area: 4 / 1 / 5 / 3;
+}
+figure:nth-child(9)  {
+    grid-area: 4 / 3 / 6 / 5;
+}
+figure:nth-child(10)  {
+    grid-area: 5 / 1 / 6 / 3;
+}
